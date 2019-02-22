@@ -1,12 +1,14 @@
 package com.example.myapplication;
 
 import java.io.Serializable;
-
+/* Create the Friend objects and implement Serializable so the Ratings values will be saved.
+So when we close and reopen the app the Ratings will still be there.
+*/
 public class Friend implements Serializable {
     private String name, bio;
     private int drawableId;
     private float rating;
-
+// construct the friend object
     public Friend(String name, String bio, int drawableId) {
         this.name = name;
         this.bio = bio;

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // fill an ArrayList with new friends
         ArrayList<Friend> friends = new ArrayList<>();
         friends.add(new Friend("Arya", "Arya is the younger daughter and third child of Lord Eddard Stark and his wife Lady Catelyn Stark. She is tomboyish, headstrong, feisty, independent, disdains traditional female pursuits, and is often mistaken for a boy. She wields a smallsword named Needle, a gift from her half-brother, Jon Snow, and is trained in the Braavosi style of sword fighting by Syrio Forel.", getResources().getIdentifier("drawable/arya", "drawable", getPackageName())));
         friends.add(new Friend("Cersei", " Cersei Lannister, Queen of the Seven Kingdoms of Westeros, is the wife of King Robert Baratheon. Her father arranged the marriage after his attempt to betroth her to Prince Rhaegar Targaryen, as she wanted, failed.", getResources().getIdentifier("drawable/cersei", "drawable", getPackageName())));
@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         friends.add(new Friend("Margaery", "Margaery Tyrell is the only daughter of Alerie Hightower and Mace Tyrell, the Lord of Highgarden in the Reach. Her older brothers are the heir Willas, Garlan and Loras the Knight of Flowers, who is a member of the Kingsguard.", getResources().getIdentifier("drawable/margaery", "drawable", getPackageName())));
         friends.add(new Friend("Melisandre", "lso known as \"The Red Woman\", Melisandre is a shadowbinder and a priestess of R'hllor in service to Stannis Baratheon. Originally a slave from Asshai called Melony, she is chosen by the Red Temple and recruited as a red priestess, and as a result has prophetic powers that give her partial knowledge of future events.", getResources().getIdentifier("drawable/melisandre", "drawable", getPackageName())));
         friends.add(new Friend("Sansa", "Sansa Stark is the second child and elder daughter of Eddard Stark and Catelyn Stark. She was born and raised in Winterfell, until leaving with her father and sister at the beginning of the series.", getResources().getIdentifier("drawable/sansa", "drawable", getPackageName())));
-        friends.add(new Friend("Tyrion", "Tyrion Lannister's bio", getResources().getIdentifier("drawable/tyrion", "drawable", getPackageName())));
-
+        friends.add(new Friend("Tyrion", "Tyrion is a dwarf and member of House Lannister of Casterly Rock, one of the wealthiest and most powerful families in the fictional continent of Westeros. In the story, Tyrion uses his status as a Lannister to mitigate the prejudice he has received all of his life, even from his family. Knowing that no one will ever take him seriously, he soothes his inadequacies with wine, wit and self-indulgence.", getResources().getIdentifier("drawable/tyrion", "drawable", getPackageName())));
+        // initialize the adapter to fill the grid with friends from the friends list
         FriendsAdapter adapter = new FriendsAdapter(this, R.layout.grid_item, friends);
         GridView gv = findViewById(R.id.grid);
         gv.setAdapter(adapter);
         gv.setOnItemClickListener(new GridItemClickListener());
     }
-
+    // implement the onItemClickListener from the grid view, create an intent and put the friend inside
     private class GridItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
             intent.putExtra("clicked_friend", clickedFriend);
             startActivity(intent);
-
         }
     }
 
